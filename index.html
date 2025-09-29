@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Polensky - Realty Executives Platinum</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sticky Top Banner -->
+    <div class="sticky-banner">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="logo-container">
+                        <img src="Assets/RE-Platinum White.png" alt="Realty Executives Platinum" class="logo-img">
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1 class="banner-name">Kathy Polensky</h1>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="banner-actions">
+                        <button class="login-button" id="loginBtn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-circle"></i>
+                            <span>Login</span>
+                        </button>
+                        <a href="tel:920-988-9596" class="call-button">
+                            <i class="bi bi-telephone-fill"></i>
+                            <span>(920) 988-9596</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold text-primary mb-3">Kathy Polensky</h1>
+                        <h2 class="h3 text-secondary mb-4">Sales Executive at Realty Executives Platinum</h2>
+                        <div class="contact-info">
+                            <a href="tel:920-988-9596" class="btn btn-outline-primary btn-lg me-3">
+                                <i class="bi bi-telephone"></i> (920) 988-9596
+                            </a>
+                            <a href="mailto:kathy.polensky@realtyexecutives.com" class="btn btn-primary btn-lg">
+                                <i class="bi bi-envelope"></i> Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="hero-image text-center">
+                        <!-- Placeholder for Realty Executives yard sign -->
+                        <div class="yard-sign-placeholder">
+                            <i class="bi bi-house-door-fill display-1 text-primary"></i>
+                            <p class="mt-2">Realty Executives<br>Yard Sign</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bio Section -->
+    <section class="bio-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bio-content text-center">
+                        <h3 class="h2 mb-4">About Kathy Polensky</h3>
+                        <p class="lead">
+                            Whether you're looking to buy or sell here in Watertown and the surrounding communities, 
+                            my goal is simple: to ensure that your experience is an enjoyable one! I began my career 
+                            as a REALTOR® with Realty Executives Platinum back in 2013, and ever since I have been 
+                            committed to honesty, hard work, and a true dedication to serving my clients.
+                        </p>
+                        <p>
+                            I work with a range of different residential properties, including single-family homes, 
+                            condos, and even land. Just know that whatever you need, I can't wait to act as your 
+                            trusted guide and help you find the home of your dreams. Feel free to get in touch 
+                            anytime to discuss your individual goals!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAs Section -->
+    <section class="ctas-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">How Can I Help You?</h3>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="cta-card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-house-door display-4 text-primary mb-3"></i>
+                            <h4 class="card-title">Buying Your Dream Home</h4>
+                            <p class="card-text">Let me help you find the perfect home in Watertown and surrounding areas.</p>
+                            <a href="buying.html" class="btn btn-primary btn-lg">Start Your Search</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="cta-card h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-house-up display-4 text-primary mb-3"></i>
+                            <h4 class="card-title">Selling Your Property</h4>
+                            <p class="card-text">Get the best value for your home with my expert marketing and negotiation skills.</p>
+                            <a href="selling.html" class="btn btn-primary btn-lg">Get Your Home Value</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Contact CTAs -->
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h4 class="mb-4">Connect With Me</h4>
+                    <div class="contact-buttons">
+                        <a href="mailto:kathy.polensky@realtyexecutives.com" class="btn btn-outline-primary me-3 mb-2">
+                            <i class="bi bi-envelope"></i> Email via Outlook
+                        </a>
+                        <a href="https://outlook.live.com/calendar/0/deeplink/compose" class="btn btn-outline-primary me-3 mb-2">
+                            <i class="bi bi-calendar"></i> Book Appointment
+                        </a>
+                        <a href="sms:920-988-9596" class="btn btn-outline-primary mb-2">
+                            <i class="bi bi-chat"></i> Text Message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MLS Listings Map Section -->
+    <section class="listings-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">Current Listings</h3>
+                    <p class="lead">Explore properties in Watertown and surrounding areas</p>
+                </div>
+            </div>
+            
+            <!-- Filter Controls -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="filter-controls bg-light p-3 rounded">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Price Range</label>
+                                <select class="form-select" id="priceFilter">
+                                    <option value="">All Prices</option>
+                                    <option value="0-200000">Under $200K</option>
+                                    <option value="200000-300000">$200K - $300K</option>
+                                    <option value="300000-400000">$300K - $400K</option>
+                                    <option value="400000+">$400K+</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Property Type</label>
+                                <select class="form-select" id="typeFilter">
+                                    <option value="">All Types</option>
+                                    <option value="single-family">Single Family</option>
+                                    <option value="condo">Condo</option>
+                                    <option value="land">Land</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="sold">Sold</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Actions</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-primary" onclick="filterListings()">Filter</button>
+                                    <button class="btn btn-outline-secondary" onclick="resetFilters()">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Maps Embed -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.123456789!2d-88.7289!3d43.1945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8805c1234567890%3A0x1234567890abcdef!2sWatertown%2C%20WI!5e0!3m2!1sen!2sus!4v1234567890"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Listing Addition -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div id="addListingSection" class="d-none">
+                        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addListingModal">
+                            <i class="bi bi-plus-circle"></i> Add New Listing
+                        </button>
+                        <p class="small text-muted mt-2">
+                            <!-- Contact SCWMLS for API permissions for automatic uploads -->
+                            Contact SCWMLS for API permissions for automatic uploads
+                        </p>
+                    </div>
+                    <div id="loginRequiredSection">
+                        <p class="text-muted">Please log in to add new listings</p>
+                        <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person-circle"></i> Login Required
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">What My Clients Say</h3>
+                    <p class="lead">Reviews from satisfied customers across multiple platforms</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Testimonial items will be populated by JavaScript -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dream Team Section -->
+    <section class="dream-team-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="h2 mb-4">Meet the Dream Team</h3>
+                    <p class="lead mb-4">
+                        Kathy Polensky and her partner collaborate to provide exceptional service 
+                        and expertise in the Watertown real estate market.
+                    </p>
+                    <a href="dream-team.html" class="btn btn-primary btn-lg">Learn About Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communities Section -->
+    <section class="communities-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">Communities We Serve</h3>
+                    <p class="lead">Expert knowledge of local markets</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="community-card text-center" data-bs-toggle="modal" data-bs-target="#watertownModal">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-geo-alt-fill display-4 text-primary mb-3"></i>
+                                <h4 class="card-title">Watertown</h4>
+                                <p class="card-text">Population: ~23,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="community-card text-center" data-bs-toggle="modal" data-bs-target="#ixoniaModal">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-geo-alt-fill display-4 text-primary mb-3"></i>
+                                <h4 class="card-title">Ixonia</h4>
+                                <p class="card-text">Population: ~1,200</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="community-card text-center" data-bs-toggle="modal" data-bs-target="#johnsonCreekModal">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <i class="bi bi-geo-alt-fill display-4 text-primary mb-3"></i>
+                                <h4 class="card-title">Johnson Creek</h4>
+                                <p class="card-text">Population: ~2,800</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buying/Selling Infographics -->
+    <section class="infographics-section py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="infographic-card text-center">
+                        <h4 class="mb-4">The Buying Process</h4>
+                        <div class="process-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h5>Search</h5>
+                                <p>Find your perfect home</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h5>View</h5>
+                                <p>Tour properties</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h5>Offer</h5>
+                                <p>Make your best offer</p>
+                            </div>
+                        </div>
+                        <a href="buying.html" class="btn btn-primary btn-lg mt-4">Start Buying</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="infographic-card text-center">
+                        <h4 class="mb-4">The Selling Process</h4>
+                        <div class="process-steps">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <h5>Valuate</h5>
+                                <p>Get your home's value</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <h5>List</h5>
+                                <p>Market your property</p>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <h5>Sell</h5>
+                                <p>Close the deal</p>
+                            </div>
+                        </div>
+                        <a href="selling.html" class="btn btn-primary btn-lg mt-4">Start Selling</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="forms-section py-5 bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Home Valuation Form -->
+                <div class="col-lg-6">
+                    <div class="form-card">
+                        <h4 class="mb-4">What's My Home Worth?</h4>
+                        <p class="text-muted mb-4">
+                            Knowing your property's market value is a crucial step in determining its listing price.
+                        </p>
+                        <form id="homeValuationForm">
+                            <div class="mb-3">
+                                <label for="valuationName" class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="valuationName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="valuationZip" class="form-label">Zip Code *</label>
+                                <input type="text" class="form-control" id="valuationZip" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="valuationContact" class="form-label">Email or Phone *</label>
+                                <input type="text" class="form-control" id="valuationContact" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send My Estimate</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col-lg-6">
+                    <div class="form-card">
+                        <h4 class="mb-4">Questions? Need Advice?</h4>
+                        <p class="text-muted mb-4">Complete this form for more information.</p>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactPhone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="contactPhone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactComments" class="form-label">Comments</label>
+                                <textarea class="form-control" id="contactComments" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mortgage Calculator Section -->
+    <section class="calculator-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">Mortgage Calculator</h3>
+                    <p class="lead">Calculate your monthly payments and affordability</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="calculator-card">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h5>Purchase Information</h5>
+                                <div class="mb-3">
+                                    <label for="purchasePrice" class="form-label">Purchase Price ($)</label>
+                                    <input type="number" class="form-control" id="purchasePrice" value="300000">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="downPayment" class="form-label">Down Payment ($)</label>
+                                    <input type="number" class="form-control" id="downPayment" value="60000">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="interestRate" class="form-label">Interest Rate (%)</label>
+                                    <input type="number" class="form-control" id="interestRate" value="6.5" step="0.1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loanTerm" class="form-label">Loan Term (Years)</label>
+                                    <select class="form-select" id="loanTerm">
+                                        <option value="30">30 Years</option>
+                                        <option value="25">25 Years</option>
+                                        <option value="20">20 Years</option>
+                                        <option value="15">15 Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Additional Costs</h5>
+                                <div class="mb-3">
+                                    <label for="propertyTax" class="form-label">Annual Property Tax ($)</label>
+                                    <input type="number" class="form-control" id="propertyTax" value="3000">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="insurance" class="form-label">Annual Insurance ($)</label>
+                                    <input type="number" class="form-control" id="insurance" value="1200">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hoaFees" class="form-label">Annual HOA Fees ($)</label>
+                                    <input type="number" class="form-control" id="hoaFees" value="0">
+                                </div>
+                                <button class="btn btn-primary" onclick="calculateMortgage()">Calculate</button>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="calculation-results">
+                                    <h5>Monthly Payment Breakdown</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Principal & Interest:</strong> <span id="principalInterest">$0</span></p>
+                                            <p><strong>Property Taxes:</strong> <span id="monthlyTax">$0</span></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Homeowner's Insurance:</strong> <span id="monthlyInsurance">$0</span></p>
+                                            <p><strong>HOA Dues:</strong> <span id="monthlyHOA">$0</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="total-payment">
+                                        <h4>Total Monthly Payment: <span id="totalPayment" class="text-primary">$0</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="disclaimer mt-3">
+                            <small class="text-muted">
+                                *Mortgage values are calculated by Realty Executives International
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media RSS Feed Section -->
+    <section class="social-feed-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h3 class="h2">Follow My Journey</h3>
+                    <p class="lead">Stay updated with the latest real estate news and market insights</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="social-feed-grid">
+                        <!-- Social media posts will be populated by JavaScript -->
+                        <div class="social-post">
+                            <div class="post-header">
+                                <i class="bi bi-instagram text-primary"></i>
+                                <span class="platform">Instagram</span>
+                                <span class="date">2 hours ago</span>
+                            </div>
+                            <div class="post-content">
+                                <p>Beautiful new listing in Watertown! 3BR/2BA with updated kitchen and hardwood floors. Call me for a private showing! #WatertownRealEstate #NewListing</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-post">
+                            <div class="post-header">
+                                <i class="bi bi-facebook text-primary"></i>
+                                <span class="platform">Facebook</span>
+                                <span class="date">1 day ago</span>
+                            </div>
+                            <div class="post-content">
+                                <p>Market update: Home prices in Watertown are up 5% this quarter. Great time to sell! Contact me for a free home valuation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-post">
+                            <div class="post-header">
+                                <i class="bi bi-linkedin text-primary"></i>
+                                <span class="platform">LinkedIn</span>
+                                <span class="date">3 days ago</span>
+                            </div>
+                            <div class="post-content">
+                                <p>Proud to be part of the Realty Executives Platinum team! 10+ years of helping families find their dream homes in Watertown and surrounding areas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Book CTA Section -->
+    <section class="free-book-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="h2 mb-4">Get Your Free Real Estate Guide</h3>
+                    <p class="lead mb-4">
+                        Download our comprehensive guide to buying and selling real estate in Watertown and surrounding areas.
+                    </p>
+                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#freeBookModal">
+                        Sign Up for Free Book
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Kathy Polensky</h5>
+                    <p>Sales Executive at Realty Executives Platinum</p>
+                    <p>DRE# 76830-94</p>
+                    <p>1507 E Main St, Watertown, WI 53094</p>
+                    <p>Mobile: <a href="tel:920-988-9596" class="text-light">(920) 988-9596</a></p>
+                </div>
+                <div class="col-lg-6">
+                    <h5>About Realty Executives</h5>
+                    <p>
+                        Realty Executives agents are real estate experts with the education and expertise 
+                        you need to navigate through the process of buying or selling a home.
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-2">Copyright 2025 Realty Executives All Rights Reserved.</p>
+                    <p class="small">
+                        Each office independently owned and operated. Please disregard this message 
+                        if you are already under contract with another real estate professional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Agent Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginUsername" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="loginUsername" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">
+                                Remember me
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="handleLogin()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Listing Modal -->
+    <div class="modal fade" id="addListingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Listing</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addListingForm">
+                        <div class="mb-3">
+                            <label for="listingAddress" class="form-label">Address *</label>
+                            <input type="text" class="form-control" id="listingAddress" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingPrice" class="form-label">Price *</label>
+                            <input type="number" class="form-control" id="listingPrice" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingType" class="form-label">Property Type *</label>
+                            <select class="form-select" id="listingType" required>
+                                <option value="">Select Type</option>
+                                <option value="single-family">Single Family</option>
+                                <option value="condo">Condo</option>
+                                <option value="land">Land</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="listingStatus" class="form-label">Status *</label>
+                            <select class="form-select" id="listingStatus" required>
+                                <option value="">Select Status</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="sold">Sold</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addListing()">Add Listing</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Book Modal -->
+    <div class="modal fade" id="freeBookModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Get Your Free Real Estate Guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="freeBookForm">
+                        <div class="mb-3">
+                            <label for="bookName" class="form-label">Name *</label>
+                            <input type="text" class="form-control" id="bookName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookEmail" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="bookEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bookPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="bookPhone">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="submitFreeBook()">Get My Free Guide</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Modals -->
+    <div class="modal fade" id="watertownModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Watertown, Wisconsin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Population:</strong> ~23,000</p>
+                    <p><strong>Key Attractions:</strong> Rock River, historic downtown, excellent schools</p>
+                    <p><strong>Real Estate Market:</strong> Strong market with diverse housing options from historic homes to new construction. Average home price: $250,000-$350,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ixoniaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ixonia, Wisconsin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Population:</strong> ~1,200</p>
+                    <p><strong>Key Attractions:</strong> Rural charm, close-knit community, scenic countryside</p>
+                    <p><strong>Real Estate Market:</strong> Rural properties and larger lots. Great for those seeking space and privacy. Average home price: $200,000-$400,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="johnsonCreekModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Johnson Creek, Wisconsin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Population:</strong> ~2,800</p>
+                    <p><strong>Key Attractions:</strong> Outlet mall, growing community, convenient location</p>
+                    <p><strong>Real Estate Market:</strong> Growing community with new developments. Mix of established neighborhoods and new construction. Average home price: $225,000-$325,000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
