@@ -619,7 +619,6 @@ function handleLogout() {
 function updateUIForAuth() {
     const loginBtn = document.getElementById('loginBtn');
     const addListingSection = document.getElementById('addListingSection');
-    const loginRequiredSection = document.getElementById('loginRequiredSection');
     
     if (currentUser) {
         // User is logged in
@@ -635,7 +634,6 @@ function updateUIForAuth() {
         
         // Show add listing section
         addListingSection.classList.remove('d-none');
-        loginRequiredSection.classList.add('d-none');
     } else {
         // User is not logged in
         loginBtn.innerHTML = `
@@ -650,7 +648,6 @@ function updateUIForAuth() {
         
         // Hide add listing section
         addListingSection.classList.add('d-none');
-        loginRequiredSection.classList.remove('d-none');
     }
 }
 
