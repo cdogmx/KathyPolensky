@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Kathy Polensky Real Estate Website - Static HTML/CSS/JS with Bootstrap",
   "main": "index.html",
+  "type": "static-site",
   "scripts": {
     "start": "python3 -m http.server 8000",
     "dev": "python3 -m http.server 8000",
-    "serve": "python3 -m http.server 8000"
+    "serve": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build required'",
+    "vercel-build": "echo 'Static site - no build required'"
   },
   "keywords": [
     "real-estate",
@@ -15,7 +18,8 @@
     "html",
     "css",
     "javascript",
-    "responsive"
+    "responsive",
+    "github-pages"
   ],
   "author": "Kathy Polensky",
   "license": "MIT",

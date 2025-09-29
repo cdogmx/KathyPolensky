@@ -6,8 +6,12 @@ A responsive **static HTML/CSS/JavaScript** website for real estate agent Kathy 
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
 - **Framework:** Bootstrap 5
 - **Icons:** Bootstrap Icons
-- **Deployment:** GitHub Pages
+- **Deployment:** GitHub Pages (NOT Vercel/Next.js)
 - **Type:** Static Website (No build process required)
+- **Hosting:** GitHub Pages (Free static hosting)
+
+## ⚠️ **Important: Deployment Method**
+This is a **STATIC WEBSITE** that should be deployed using **GitHub Pages**, NOT Vercel or Next.js deployment platforms.
 
 ## Features
 

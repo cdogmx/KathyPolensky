@@ -1,0 +1,5 @@
+# This is a static HTML/CSS/JS website, not a Next.js app
+# Use GitHub Pages instead of Vercel for deployment
+
+# Ignore all files to prevent Vercel deployment
+*
