@@ -1,0 +1,32 @@
+{
+  "name": "kathy-polensky-real-estate",
+  "version": "1.0.0",
+  "description": "Kathy Polensky Real Estate Website - Static HTML/CSS/JS with Bootstrap",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "real-estate",
+    "bootstrap",
+    "static-website",
+    "html",
+    "css",
+    "javascript",
+    "responsive"
+  ],
+  "author": "Kathy Polensky",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdogmx/KathyPolensky.git"
+  },
+  "homepage": "https://cdogmx.github.io/KathyPolensky/",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

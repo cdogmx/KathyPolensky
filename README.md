@@ -1,6 +1,13 @@
 # Kathy Polensky Real Estate Website
 
-A responsive HTML/CSS/JavaScript mockup for real estate agent Kathy Polensky's website, closely mimicking the professional structure and aesthetic of her Realty Executives profile page.
+A responsive **static HTML/CSS/JavaScript** website for real estate agent Kathy Polensky, built with Bootstrap 5 and featuring a professional design that closely mimics her Realty Executives profile page.
+
+## 🏗️ **Technology Stack**
+- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+- **Framework:** Bootstrap 5
+- **Icons:** Bootstrap Icons
+- **Deployment:** GitHub Pages
+- **Type:** Static Website (No build process required)
 
 ## Features
 
