@@ -630,6 +630,8 @@ function updateUIForAuth() {
         loginBtn.setAttribute('onclick', 'handleLogout()');
         loginBtn.setAttribute('data-bs-toggle', '');
         loginBtn.setAttribute('data-bs-target', '');
+        loginBtn.classList.remove('btn-outline-light');
+        loginBtn.classList.add('btn-success');
         
         // Show add listing section
         addListingSection.classList.remove('d-none');
@@ -638,11 +640,13 @@ function updateUIForAuth() {
         // User is not logged in
         loginBtn.innerHTML = `
             <i class="bi bi-person-circle"></i>
-            <span>Login</span>
+            <span>Agent Login</span>
         `;
         loginBtn.setAttribute('onclick', '');
         loginBtn.setAttribute('data-bs-toggle', 'modal');
         loginBtn.setAttribute('data-bs-target', '#loginModal');
+        loginBtn.classList.remove('btn-success');
+        loginBtn.classList.add('btn-outline-light');
         
         // Hide add listing section
         addListingSection.classList.add('d-none');

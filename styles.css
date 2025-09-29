@@ -458,6 +458,57 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
+/* Agent Login Section */
+.agent-login-section {
+    background: var(--dark-bg) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.agent-login-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a202c 100%);
+    z-index: 1;
+}
+
+.agent-login-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.agent-login-section h3,
+.agent-login-section p {
+    color: white;
+}
+
+.agent-login-section .btn-outline-light {
+    border: 2px solid white;
+    color: white;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.agent-login-section .btn-outline-light:hover {
+    background: white;
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.agent-login-section .btn-outline-light i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
 /* Footer */
 .footer {
     background: var(--dark-bg) !important;
@@ -568,17 +619,17 @@ h1, h2, h3, h4, h5, h6 {
         gap: 10px;
     }
     
-    .login-button {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+    .agent-login-section .btn-outline-light {
+        padding: 10px 25px;
+        font-size: 1rem;
     }
     
-    .login-button span {
-        display: none;
+    .agent-login-section h3 {
+        font-size: 1.8rem;
     }
     
-    .login-button i {
-        margin-right: 0;
+    .agent-login-section p {
+        font-size: 1rem;
     }
     
     .hero-section {
