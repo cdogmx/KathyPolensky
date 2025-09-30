@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import Papa from 'papaparse';
 
 interface ListingFormData {
   mlsNumber: string;
@@ -16,10 +17,38 @@ interface AuthData {
   password: string;
 }
 
+interface BulkListingData {
+  mlsNumber: string;
+  address: string;
+  price: number;
+  status: 'Active' | 'Pending' | 'Sold';
+  description?: string;
+}
+
+interface BulkUploadResult {
+  success: boolean;
+  message: string;
+  data?: {
+    total: number;
+    created: number;
+    updated: number;
+    errors: Array<{
+      row: number;
+      mlsNumber: string;
+      error: string;
+    }>;
+  };
+}
+
 const AdminPage: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [activeTab, setActiveTab] = useState('single');
+  const [csvFile, setCsvFile] = useState<File | null>(null);
+  const [csvPreview, setCsvPreview] = useState<BulkListingData[]>([]);
+  const [isProcessingCsv, setIsProcessingCsv] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   const {
@@ -86,6 +115,131 @@ const AdminPage: React.FC = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
     setSubmitMessage('');
+  };
+
+  // CSV Processing Functions
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type === 'text/csv') {
+      setCsvFile(file);
+      parseCsvFile(file);
+    } else {
+      setSubmitMessage('Please select a valid CSV file.');
+    }
+  };
+
+  const parseCsvFile = (file: File) => {
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      transformHeader: (header) => {
+        // Normalize header names to match our interface
+        const normalized = header.toLowerCase().trim();
+        const mapping: { [key: string]: string } = {
+          'mls number': 'mlsNumber',
+          'mls_number': 'mlsNumber',
+          'mls': 'mlsNumber',
+          'address': 'address',
+          'price': 'price',
+          'status': 'status',
+          'description': 'description'
+        };
+        return mapping[normalized] || normalized;
+      },
+      complete: (results) => {
+        if (results.errors.length > 0) {
+          setSubmitMessage(`CSV parsing errors: ${results.errors.map(e => e.message).join(', ')}`);
+          return;
+        }
+
+        const validData: BulkListingData[] = [];
+        const errors: string[] = [];
+
+        results.data.forEach((row: any, index: number) => {
+          try {
+            // Validate and transform data
+            const listing: BulkListingData = {
+              mlsNumber: String(row.mlsNumber || row.mls_number || row.mls || '').trim(),
+              address: String(row.address || '').trim(),
+              price: parseInt(String(row.price || '0').replace(/[^0-9]/g, '')),
+              status: String(row.status || 'Active').trim() as 'Active' | 'Pending' | 'Sold',
+              description: String(row.description || '').trim() || undefined
+            };
+
+            // Validate required fields
+            if (!listing.mlsNumber) {
+              errors.push(`Row ${index + 2}: MLS Number is required`);
+              return;
+            }
+            if (!listing.address) {
+              errors.push(`Row ${index + 2}: Address is required`);
+              return;
+            }
+            if (!listing.price || listing.price <= 0) {
+              errors.push(`Row ${index + 2}: Valid price is required`);
+              return;
+            }
+            if (!['Active', 'Pending', 'Sold'].includes(listing.status)) {
+              errors.push(`Row ${index + 2}: Status must be Active, Pending, or Sold`);
+              return;
+            }
+
+            validData.push(listing);
+          } catch (error) {
+            errors.push(`Row ${index + 2}: Invalid data format`);
+          }
+        });
+
+        if (errors.length > 0) {
+          setSubmitMessage(`Validation errors found:\n${errors.slice(0, 10).join('\n')}${errors.length > 10 ? `\n... and ${errors.length - 10} more errors` : ''}`);
+        } else {
+          setSubmitMessage(`CSV parsed successfully! Found ${validData.length} valid listings.`);
+        }
+
+        setCsvPreview(validData.slice(0, 10)); // Show first 10 rows as preview
+      },
+      error: (error) => {
+        setSubmitMessage(`Error parsing CSV: ${error.message}`);
+      }
+    });
+  };
+
+  const handleBulkUpload = async () => {
+    if (!csvFile || csvPreview.length === 0) {
+      setSubmitMessage('Please select and parse a CSV file first.');
+      return;
+    }
+
+    setIsProcessingCsv(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('/api/listings/bulk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_ADMIN_TOKEN || 'kathy-admin-2024'}`
+        },
+        body: JSON.stringify({ listings: csvPreview }),
+      });
+
+      const result: BulkUploadResult = await response.json();
+
+      if (result.success) {
+        setSubmitMessage(`Bulk upload completed! ${result.data?.created || 0} created, ${result.data?.updated || 0} updated. ${result.data?.errors?.length || 0} errors.`);
+        setCsvFile(null);
+        setCsvPreview([]);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
+      } else {
+        setSubmitMessage(`Bulk upload failed: ${result.message}`);
+      }
+    } catch (error) {
+      setSubmitMessage('Failed to upload listings. Please try again.');
+    } finally {
+      setIsProcessingCsv(false);
+    }
   };
 
   if (!isAuthenticated) {
@@ -176,14 +330,42 @@ const AdminPage: React.FC = () => {
               <div className="card-header bg-white border-0 py-4">
                 <h1 className="h2 text-center text-primary mb-2">
                   <i className="bi bi-plus-circle me-3"></i>
-                  Add MLS Listing
+                  MLS Listing Management
                 </h1>
                 <p className="text-muted text-center mb-0">
-                  Manually add listings from PrimeAgent or other MLS exports
+                  Add listings manually or import from PrimeAgent CSV exports
                 </p>
               </div>
 
-              <div className="card-body p-5">
+              <div className="card-body p-0">
+                {/* Tab Navigation */}
+                <ul className="nav nav-tabs nav-fill" id="listingTabs" role="tablist">
+                  <li className="nav-item" role="presentation">
+                    <button
+                      className={`nav-link ${activeTab === 'single' ? 'active' : ''}`}
+                      onClick={() => setActiveTab('single')}
+                      type="button"
+                    >
+                      <i className="bi bi-plus-circle me-2"></i>
+                      Single Entry
+                    </button>
+                  </li>
+                  <li className="nav-item" role="presentation">
+                    <button
+                      className={`nav-link ${activeTab === 'bulk' ? 'active' : ''}`}
+                      onClick={() => setActiveTab('bulk')}
+                      type="button"
+                    >
+                      <i className="bi bi-upload me-2"></i>
+                      Bulk Upload
+                    </button>
+                  </li>
+                </ul>
+
+                {/* Tab Content */}
+                <div className="tab-content p-5">
+                  {/* Single Entry Tab */}
+                  <div className={`tab-pane fade ${activeTab === 'single' ? 'show active' : ''}`}>
                 <form onSubmit={handleListingSubmit(handleListingSubmit)}>
                   <div className="row">
                     {/* MLS Number */}
@@ -338,12 +520,129 @@ const AdminPage: React.FC = () => {
                     </button>
                   </div>
                 </form>
+                  </div>
+
+                  {/* Bulk Upload Tab */}
+                  <div className={`tab-pane fade ${activeTab === 'bulk' ? 'show active' : ''}`}>
+                    <div className="mb-4">
+                      <h4 className="h5 text-primary mb-3">
+                        <i className="bi bi-file-earmark-spreadsheet me-2"></i>
+                        CSV File Upload
+                      </h4>
+                      <p className="text-muted">
+                        Upload a CSV file exported from PrimeAgent or other MLS systems. 
+                        Required columns: MLS Number, Address, Price, Status, Description (optional).
+                      </p>
+                    </div>
+
+                    {/* File Upload */}
+                    <div className="mb-4">
+                      <label htmlFor="csvFile" className="form-label fw-semibold">
+                        Select CSV File
+                      </label>
+                      <input
+                        type="file"
+                        className="form-control"
+                        id="csvFile"
+                        accept=".csv"
+                        onChange={handleFileSelect}
+                        ref={fileInputRef}
+                      />
+                      <div className="form-text">
+                        Supported formats: CSV files with headers. Max file size: 10MB
+                      </div>
+                    </div>
+
+                    {/* CSV Preview */}
+                    {csvPreview.length > 0 && (
+                      <div className="mb-4">
+                        <h5 className="h6 text-primary mb-3">
+                          <i className="bi bi-eye me-2"></i>
+                          Preview ({csvPreview.length} rows)
+                        </h5>
+                        <div className="table-responsive">
+                          <table className="table table-sm table-striped">
+                            <thead className="table-light">
+                              <tr>
+                                <th>MLS Number</th>
+                                <th>Address</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Description</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {csvPreview.map((listing, index) => (
+                                <tr key={index}>
+                                  <td>{listing.mlsNumber}</td>
+                                  <td className="text-truncate" style={{ maxWidth: '200px' }} title={listing.address}>
+                                    {listing.address}
+                                  </td>
+                                  <td>${listing.price.toLocaleString()}</td>
+                                  <td>
+                                    <span className={`badge ${
+                                      listing.status === 'Active' ? 'bg-success' :
+                                      listing.status === 'Pending' ? 'bg-warning' : 'bg-secondary'
+                                    }`}>
+                                      {listing.status}
+                                    </span>
+                                  </td>
+                                  <td className="text-truncate" style={{ maxWidth: '150px' }} title={listing.description}>
+                                    {listing.description || '-'}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Upload Actions */}
+                    <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary me-md-2"
+                        onClick={() => {
+                          setCsvFile(null);
+                          setCsvPreview([]);
+                          if (fileInputRef.current) {
+                            fileInputRef.current.value = '';
+                          }
+                          setSubmitMessage('');
+                        }}
+                        disabled={isProcessingCsv}
+                      >
+                        <i className="bi bi-x-circle me-2"></i>
+                        Clear
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-primary btn-lg"
+                        onClick={handleBulkUpload}
+                        disabled={!csvFile || csvPreview.length === 0 || isProcessingCsv}
+                      >
+                        {isProcessingCsv ? (
+                          <>
+                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            <i className="bi bi-upload me-2"></i>
+                            Upload {csvPreview.length} Listings
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Status Message */}
                 {submitMessage && (
-                  <div className={`alert mt-4 ${submitMessage.includes('successfully') ? 'alert-success' : 'alert-danger'}`}>
-                    <i className={`bi ${submitMessage.includes('successfully') ? 'bi-check-circle' : 'bi-exclamation-triangle'} me-2`}></i>
-                    {submitMessage}
+                  <div className={`alert mt-4 mx-5 ${submitMessage.includes('successfully') || submitMessage.includes('completed') ? 'alert-success' : 'alert-danger'}`}>
+                    <i className={`bi ${submitMessage.includes('successfully') || submitMessage.includes('completed') ? 'bi-check-circle' : 'bi-exclamation-triangle'} me-2`}></i>
+                    <pre className="mb-0" style={{ whiteSpace: 'pre-wrap' }}>{submitMessage}</pre>
                   </div>
                 )}
               </div>

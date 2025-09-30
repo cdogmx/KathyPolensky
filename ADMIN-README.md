@@ -5,11 +5,14 @@ This is a Next.js admin interface for manually adding MLS listings to the Kathy 
 ## 🚀 Features
 
 - **Secure Authentication** - Password-protected admin access
+- **Dual Entry Methods** - Single entry form and bulk CSV upload
 - **Form Validation** - React Hook Form with Zod validation
+- **CSV Processing** - PapaParse for client-side CSV parsing and validation
 - **Database Integration** - Prisma with Vercel Postgres
 - **Upsert Functionality** - Updates existing listings or creates new ones
 - **Error Handling** - Comprehensive error handling and user feedback
 - **Responsive Design** - Bootstrap styling matching the main website theme
+- **CSV Preview** - Preview parsed data before upload
 
 ## 📋 Prerequisites
 
@@ -126,7 +129,7 @@ Authenticate admin user.
 ```
 
 ### POST /api/listings
-Create or update a listing.
+Create or update a single listing.
 
 **Request:**
 ```json
@@ -151,6 +154,45 @@ Create or update a listing.
     "price": 324900,
     "status": "Active",
     "action": "created"
+  }
+}
+```
+
+### POST /api/listings/bulk
+Create or update multiple listings from CSV upload.
+
+**Request:**
+```json
+{
+  "listings": [
+    {
+      "mlsNumber": "1929100",
+      "address": "305 Theresa St, Watertown, WI 53094",
+      "price": 324900,
+      "status": "Active",
+      "description": "Beautiful 3BR/2BA home..."
+    },
+    {
+      "mlsNumber": "1934327",
+      "address": "228 Fremont St, Watertown, WI 53098",
+      "price": 279900,
+      "status": "Active",
+      "description": "Charming 2BR/2BA cottage..."
+    }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Bulk upload completed successfully. 1 created, 1 updated.",
+  "data": {
+    "total": 2,
+    "created": 1,
+    "updated": 1,
+    "errors": []
   }
 }
 ```
@@ -190,6 +232,32 @@ npx prisma db push --schema=./prisma/schema.prisma
 | Price | Number | Yes | Positive integer, max $999M |
 | Status | Enum | Yes | Active, Pending, or Sold |
 | Description | String | No | Max 2000 characters |
+
+## 📊 CSV Upload Format
+
+### Required CSV Headers
+The CSV file must contain these column headers (case-insensitive):
+- `MLS Number` (or `MLS Number`, `mls_number`, `mls`)
+- `Address`
+- `Price`
+- `Status`
+- `Description` (optional)
+
+### Sample CSV Format
+```csv
+MLS Number,Address,Price,Status,Description
+1929100,"305 Theresa St, Watertown, WI 53094",324900,Active,"Beautiful 3BR/2BA home"
+1934327,"228 Fremont St, Watertown, WI 53098",279900,Active,"Charming 2BR/2BA cottage"
+1934636,"605 Autumn Crest Dr, Watertown, WI 53094",389900,Pending,"Luxury 3BR/3BA home"
+```
+
+### CSV Processing Features
+- **Header Normalization** - Automatically maps various header formats
+- **Data Validation** - Validates each row before processing
+- **Error Reporting** - Shows specific errors for invalid rows
+- **Preview Table** - Shows first 10 rows before upload
+- **Batch Processing** - Processes up to 1000 listings per batch
+- **Upsert Logic** - Updates existing or creates new listings
 
 ## 🛡️ Security Features
 
