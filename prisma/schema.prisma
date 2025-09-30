@@ -17,6 +17,8 @@ model Listing {
   price       Int
   status      ListingStatus
   description String?
+  latitude    Float?
+  longitude   Float?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
